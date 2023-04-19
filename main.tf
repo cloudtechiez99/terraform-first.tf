@@ -1,13 +1,24 @@
-provider "aws" {
-  region  = "us-east-1"
+provider "google" {
+  credentials = file("creds.json")
+  project = "{{YOUR GCP PROJECT}}"
+  region  = "us-central1"
+  zone    = "us-central1-c"
 }
 
-resource "aws_instance" "example_terraform" {
-  instance_type = "t2.micro"
-  ami           = "ami-0b898040803850657"
-}
+resource "google_compute_instance" "vm_instance" {
+  name         = "terraform-instance"
+  machine_type = "e2-micro"
 
-resource "aws_instance" "another_example_terraform" {
-  instance_type = "t2.micro"
-  ami           = "ami-09d95fab7fff3776c"
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-11"
+    }
+  }
+
+  network_interface {
+    # A default network is created for all GCP projects
+    network = "default"
+    access_config {
+    }
+  }
 }
