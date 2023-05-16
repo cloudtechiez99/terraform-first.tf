@@ -32,3 +32,8 @@ variable "network_type" {
   type        = string
   description = "Name of the network to create the resources"
 }
+
+variable "gcp_creds" {
+  type        = string
+  description = "GCP creds"
+}
