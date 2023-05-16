@@ -15,15 +15,3 @@ resource "google_compute_instance" "vm_instance" {
     }
   }
 }
-
-
-resource "google_compute_disk" "custom_disk" {
-  name  = var.disk_name
-  type  = var.disk_type
-  zone  = var.zone_name
-  image = var.resource_image
-  labels = {
-    environment = var.disk_label
-  }
-  physical_block_size_bytes = var.disk_size
-}
