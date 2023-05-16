@@ -33,7 +33,7 @@ variable "network_type" {
   description = "Name of the network to create the resources"
 }
 
-variable "gcp_creds" {
+variable "gcp_creds_new" {
   type        = string
   description = "GCP creds"
 }
